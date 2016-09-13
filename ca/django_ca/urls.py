@@ -14,7 +14,9 @@
 # see <http://www.gnu.org/licenses/>.
 
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
+from rest_framework import routers
+from .api import CertificateAuthorityViewSet, CertificateViewSet
 
 from . import ca_settings
 from . import views
@@ -22,6 +24,13 @@ from . import views
 app_name = 'django_ca'
 urlpatterns = []
 
+router = routers.DefaultRouter()
+router.register(r'ca', CertificateAuthorityViewSet)
+router.register(r'cert', CertificateViewSet)
+
+urlpatterns += [
+    url(r'^api/', include(router.urls)),
+]
 
 CA_OCSP_URLS = getattr(settings, 'CA_OCSP_URLS', {})
 

@@ -3,3 +3,6 @@ asn1crypto==0.18.3
 ocspbuilder==0.10.2
 oscrypto==0.16.2
 pyOpenSSL==16.1.0
+djangorestframework
+markdown
+django-filter
