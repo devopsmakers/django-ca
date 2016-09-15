@@ -37,6 +37,10 @@ from .models import Watcher
 from .utils import SUBJECT_FIELDS
 from .views import RevokeCertificateView
 
+from rest_framework.authtoken.admin import TokenAdmin
+
+TokenAdmin.raw_id_fields = ('user',)
+
 _x509_ext_fields = [
     'keyUsage', 'extendedKeyUsage', 'subjectKeyIdentifier', 'issuerAltName',
     'authorityKeyIdentifier', 'crlDistributionPoints', 'authorityInfoAccess', ]
