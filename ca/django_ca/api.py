@@ -99,7 +99,11 @@ class CertificateViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
 
         # Return the certificate
-        return Response(serializer.data['pub'], status=status.HTTP_201_CREATED, headers=headers)
+        msg = {}
+        msg['pub'] = serializer.data['pub']
+        msg['chain'] = ca.pub
+
+        return Response(msg, status=status.HTTP_201_CREATED, headers=headers)
 
 def err_response(err):
     msg = {}

@@ -39,6 +39,8 @@ from .views import RevokeCertificateView
 
 from rest_framework.authtoken.admin import TokenAdmin
 
+admin.site.site_header = 'CA Signer'
+
 TokenAdmin.raw_id_fields = ('user',)
 
 _x509_ext_fields = [
